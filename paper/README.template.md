@@ -107,11 +107,11 @@ Release wheels and source archives are attached to [GitHub Releases](https://git
 ### Container
 
 ```bash
-docker pull ghcr.io/m0-ar/starlink-physical-atlas:1.0.0
-docker run --rm ghcr.io/m0-ar/starlink-physical-atlas:1.0.0 make verify
+docker build -t starlink-physical-atlas:1.0.0 .
+docker run --rm starlink-physical-atlas:1.0.0 make verify
 ```
 
-The container includes the frozen inputs, tests, and the site source. `make reproduce` runs the full pipeline inside it.
+The container includes the frozen inputs, tests, and the site source. `make reproduce` runs the full pipeline inside it. The image is built from the repository `Dockerfile`, so no registry login is required.
 
 ### Static site
 

@@ -11,8 +11,8 @@ All notable changes to this project are documented here. The format follows [Kee
 - 3D constellation explorer with inclination-family filters, shell rings, altitude exaggeration, time warp, and satellite inspection.
 - Neural Orbit game: four levels, twenty questions, a 3D concept graph, local speech, reduced-motion support, and saved progress.
 - Generated README, seven research figures, screenshots, social card, and an animated site tour.
-- Professional repository layer: CI, GitHub Pages deployment from `main` `/docs`, tagged releases, GHCR container image, issue forms, security policy, contribution guide, press kit, and citation metadata.
-- Install and packaging documentation for source, release wheels, the container image, and the static site.
+- Professional repository layer: CI, GitHub Pages deployment from `main` `/docs`, tagged releases, a reproducible container build, issue forms, security policy, contribution guide, press kit, and citation metadata.
+- Install and packaging documentation for source, release wheels, local container builds, and the static site.
 
 ### Verified
 
