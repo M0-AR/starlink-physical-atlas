@@ -1,0 +1,9 @@
+services:
+  atlas:
+    build: .
+    image: starlink-physical-atlas:local
+    working_dir: /app
+    command: ["bash", "-lc", "make reproduce && make test"]
+    volumes:
+      - ./results:/app/results
+      - ./README.md:/app/README.md

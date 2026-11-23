@@ -1,0 +1,94 @@
+{
+  "references": [
+    {
+      "id": "lottermoser2026",
+      "authors": "Clemens Lottermoser, Simon Damm, Stefan Schmid",
+      "title": "Measuring Weather Effects and Link Quality Dynamics in LEO Satellite Networks",
+      "venue": "arXiv:2603.14008",
+      "year": 2026,
+      "doi": "10.48550/arXiv.2603.14008",
+      "url": "https://arxiv.org/abs/2603.14008"
+    },
+    {
+      "id": "casparsen2026",
+      "authors": "Andreas Casparsen, Jonas Ellegaard Jakobsen, Jimmy Jessen Nielsen, Petar Popovski, Israel Leyva-Mayorga",
+      "title": "Statistical characterization and prediction of E2E latency over LEO satellite networks",
+      "venue": "npj Wireless Technology",
+      "year": 2026,
+      "doi": "10.1038/s44459-026-00044-z",
+      "url": "https://doi.org/10.1038/s44459-026-00044-z"
+    },
+    {
+      "id": "jardak2023",
+      "authors": "Nabil Jardak, Ronan Adam",
+      "title": "Practical Use of Starlink Downlink Tones for Positioning",
+      "venue": "Sensors 23(6):3234",
+      "year": 2023,
+      "doi": "10.3390/s23063234",
+      "url": "https://doi.org/10.3390/s23063234"
+    },
+    {
+      "id": "kozhaya2025",
+      "authors": "Sharbel E. Kozhaya, Joe Saroufim, Zaher M. Kassas",
+      "title": "Unveiling Starlink for PNT",
+      "venue": "NAVIGATION 72(1)",
+      "year": 2025,
+      "doi": "10.33012/navi.685",
+      "url": "https://doi.org/10.33012/navi.685"
+    },
+    {
+      "id": "ronchetti2026",
+      "authors": "Pietro Ronchetti, Sushovan Das, Laurent Vanbever, Stefano Vissicchio",
+      "title": "All But Regular: Revisiting the Starlink Constellation",
+      "venue": "ACM SIGCOMM 2026",
+      "year": 2026,
+      "doi": "10.1145/3789240.3827597",
+      "url": "https://doi.org/10.1145/3789240.3827597"
+    },
+    {
+      "id": "ali2026",
+      "authors": "Muaz Ali, Utkarsh Upadhyay, Sean McCormick, Joseph Hill, Beichuan Zhang",
+      "title": "Starlink Constellation: Deployment, Configuration, and Dynamics",
+      "venue": "arXiv:2603.25835",
+      "year": 2026,
+      "doi": "10.48550/arXiv.2603.25835",
+      "url": "https://arxiv.org/abs/2603.25835"
+    },
+    {
+      "id": "cech2026",
+      "authors": "Hendrik L. Cech, Nitinder Mohan, Jörg Ott",
+      "title": "Dissecting the StarLink: Characterizing Queuing and Flow Dynamics in the Starlink Network",
+      "venue": "ACM SIGCOMM 2026",
+      "year": 2026,
+      "doi": "10.1145/3789240.3829162",
+      "url": "https://doi.org/10.1145/3789240.3829162"
+    },
+    {
+      "id": "tidetcp2026",
+      "authors": "Qingyang Li, Li Jiang, Zhang Yihang, Lijun Dong, Zongming Guo, Xinggong Zhang",
+      "title": "TideTCP: Preventing Performance Degradation During Periodic Handovers in Starlink",
+      "venue": "IEEE Transactions on Mobile Computing",
+      "year": 2026,
+      "doi": "10.1109/tmc.2026.3744390",
+      "url": "https://doi.org/10.1109/tmc.2026.3744390"
+    },
+    {
+      "id": "vallado2006",
+      "authors": "David A. Vallado, Paul Crawford, Richard Hujsak, T. S. Kelso",
+      "title": "Revisiting Spacetrack Report #3",
+      "venue": "AIAA 2006-6753",
+      "year": 2006,
+      "doi": "",
+      "url": "https://doi.org/10.2514/6.2006-6753"
+    },
+    {
+      "id": "acm2020artifact",
+      "authors": "ACM",
+      "title": "Artifact Review and Badging, Version 1.1",
+      "venue": "ACM",
+      "year": 2020,
+      "doi": "",
+      "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
+    }
+  ]
+}

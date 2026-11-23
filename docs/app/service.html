@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>Service geometry — Starlink Physical Atlas</title>
+  <meta name="description" content="Ten-site, 24-hour Starlink service geometry: coverage, handover, Doppler, and radio-path latency bounds with explicit assumptions.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html">Overview</a>
+        <a href="atlas.html">3D Atlas</a>
+        <a href="migration.html">Migration</a>
+        <a href="planes.html">Planes</a>
+        <a href="service.html" aria-current="page">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">05 / Service geometry</span>
+        <h1>What the geometry supports — and what it does not.</h1>
+        <p>A ten-site, 24-hour simulation with a 25° elevation mask. The result is abundant visibility, frequent handover, measurable Doppler, and a radio-path latency bound that is not an end-to-end internet promise.</p>
+        <div class="meta-row"><span class="tag">10 sites</span><span class="tag">5,760 time steps</span><span class="tag">25° mask</span><span class="tag">9,938 satellites</span></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="stat-grid" style="margin-top:0">
+          <div class="stat"><strong>55</strong><span>Median visible satellites</span></div>
+          <div class="stat"><strong>30 s</strong><span>Median handover interval</span></div>
+          <div class="stat"><strong>6.19–6.27 ms</strong><span>Radio-only RTT bound</span></div>
+          <div class="stat"><strong>233.6 kHz</strong><span>Median p95 Doppler</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="card reveal">
+            <span class="card-kicker">The coverage map</span>
+            <h3>Ten ground sites, one day.</h3>
+            <p>The map is illustrative: the sites are real coordinates, but the background is an equirectangular Earth texture. Dot size is constant; hover a dot for the site summary.</p>
+            <div class="map" id="site-map" role="img" aria-label="World map with ten simulated ground sites"></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Visible satellites per site</h3>
+            <p class="chart-sub">Median number above a 25° elevation mask over 24 hours. The range is 43–65 across the ten sites.</p>
+            <div class="chart-wrap"><canvas id="chart-visible" aria-label="Bar chart of visible satellites per site" role="img"></canvas></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="chart-card reveal">
+            <h3>Handover interval</h3>
+            <p class="chart-sub">Best-satellite model: the serving satellite changes when another offers a better elevation. This is a geometric lower bound on handover frequency, not an operational scheduler.</p>
+            <div class="chart-wrap short"><canvas id="chart-handover" aria-label="Bar chart of handover intervals" role="img"></canvas></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Doppler and radio RTT</h3>
+            <p class="chart-sub">Doppler p95 per site and the four-leg radio RTT bounds. The band is the gateway-at-nadir to gateway-at-horizon assumption.</p>
+            <div class="chart-wrap short"><canvas id="chart-rtt" aria-label="Chart of radio latency bounds" role="img"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-3">
+          <div class="card reveal"><span class="card-kicker">What is measured</span><h3>Geometry, not traffic.</h3><p>Elevation, slant range, pass duration, Doppler, and the best-satellite handover. The model uses SGP4 positions at 15-second steps and a fixed 25° mask.</p></div>
+          <div class="card reveal"><span class="card-kicker">What is assumed</span><h3>Two gateway extremes.</h3><p>Public data has no gateway coordinates. The RTT bounds place the gateway at nadir and at the horizon, producing a transparent range rather than a false point estimate.</p></div>
+          <div class="card reveal"><span class="card-kicker">What is excluded</span><h3>Everything operational.</h3><p>Fiber, routing, processing, scheduling, weather, congestion, antenna tracking, and user-terminal effects are outside the model. The 6.19–6.27 ms number is radio only.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Site table</span><h2>The ten-site result.</h2></div>
+          <p>Visible counts, handover intervals, Doppler, and RTT bounds. Values are medians or p95 as labelled.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Site</th><th>Lat</th><th>Lon</th><th>Visible p50</th><th>Visible p95</th><th>Handover p50</th><th>Handover p90</th><th>RTT lower p50</th><th>RTT upper p50</th><th>Doppler p95</th></tr></thead>
+            <tbody id="service-body"><tr><td colspan="10" class="faint">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <div class="note" style="margin-top:16px"><strong>Reading the handover column:</strong> a 30-second median does not mean the network hands over every 30 seconds in practice. It means the best-elevation satellite changes that often in this geometric model. Operational schedulers can use hysteresis, capacity, and policy to behave differently.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a><p style="max-width:360px;margin-top:16px">A reproducible physical atlas of the Starlink constellation.</p></div>
+        <div><h4>Product</h4><a href="overview.html">Overview</a><a href="atlas.html">3D Atlas</a><a href="migration.html">Migration</a><a href="planes.html">Planes</a><a href="service.html">Service</a><a href="all.html">All pages</a></div>
+        <div><h4>Evidence</h4><a href="learn.html">Beginner guide</a><a href="game.html">Neural Orbit</a><a href="https://github.com/M0-AR/starlink-physical-atlas">GitHub</a><a href="https://github.com/M0-AR/starlink-physical-atlas/issues">Issues</a></div>
+      </div>
+      <div class="footer-bottom"><span>MIT code · CC BY 4.0 prose · Apr 2026 tables CC BY-SA 4.0 · Snapshot 2026-11-23 · Not affiliated with SpaceX</span><span><span data-year>2026</span></span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/chart.umd.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    (async function () {
+      const { fmt, fetchJSON } = window.Atlas;
+      const atlas = await fetchJSON("../data/atlas.json");
+      const sites = atlas.service.sites.slice().sort((a, b) => b.n_visible_p50 - a.n_visible_p50);
+      const labels = sites.map((s) => s.site);
+
+      const map = document.getElementById("site-map");
+      atlas.service.sites.forEach((s) => {
+        const dot = document.createElement("span");
+        dot.className = "site-dot";
+        dot.style.left = `${((s.lon_deg + 180) / 360) * 100}%`;
+        dot.style.top = `${((90 - s.lat_deg) / 180) * 100}%`;
+        dot.title = `${s.site}: ${fmt(s.n_visible_p50)} visible, ${fmt(s.handover_interval_p50_s)} s handover`;
+        const label = document.createElement("span");
+        label.textContent = s.site;
+        dot.appendChild(label);
+        map.appendChild(dot);
+      });
+
+      new Chart(document.getElementById("chart-visible"), {
+        type: "bar",
+        data: { labels, datasets: [{ data: sites.map((s) => s.n_visible_p50), backgroundColor: "rgba(103,232,249,0.62)", borderRadius: 4 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: true, title: { display: true, text: "visible satellites (median)" } } } }
+      });
+
+      new Chart(document.getElementById("chart-handover"), {
+        type: "bar",
+        data: { labels, datasets: [
+          { label: "p50", data: sites.map((s) => s.handover_interval_p50_s), backgroundColor: "rgba(94,234,212,0.65)", borderRadius: 4 },
+          { label: "p90", data: sites.map((s) => s.handover_interval_p90_s), backgroundColor: "rgba(192,132,252,0.5)", borderRadius: 4 }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: true, title: { display: true, text: "seconds" } } } }
+      });
+
+      new Chart(document.getElementById("chart-rtt"), {
+        type: "line",
+        data: { labels, datasets: [
+          { label: "RTT lower p50", data: sites.map((s) => s.rtt_lower_p50_ms), borderColor: "#67e8f9", backgroundColor: "rgba(103,232,249,0.12)", fill: true, tension: 0.25, pointRadius: 2, yAxisID: "y" },
+          { label: "RTT upper p50", data: sites.map((s) => s.rtt_upper_p50_ms), borderColor: "#c084fc", backgroundColor: "rgba(192,132,252,0.08)", fill: true, tension: 0.25, pointRadius: 2, yAxisID: "y" },
+          { label: "Doppler p95", data: sites.map((s) => s.pass_max_doppler_p95_khz), borderColor: "#facc15", backgroundColor: "rgba(250,204,21,0.08)", fill: false, tension: 0.25, pointRadius: 2, yAxisID: "y1" }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: false, title: { display: true, text: "radio RTT (ms)" } }, y1: { beginAtZero: false, position: "right", title: { display: true, text: "Doppler p95 (kHz)" }, grid: { drawOnChartArea: false } } } }
+      });
+
+      document.getElementById("service-body").innerHTML = sites.map((s) => `<tr><td><strong>${s.site}</strong></td><td class="mono">${fmt(s.lat_deg, 2)}</td><td class="mono">${fmt(s.lon_deg, 2)}</td><td>${fmt(s.n_visible_p50)}</td><td>${fmt(s.n_visible_p95)}</td><td>${fmt(s.handover_interval_p50_s)} s</td><td>${fmt(s.handover_interval_p90_s)} s</td><td>${fmt(s.rtt_lower_p50_ms, 2)} ms</td><td>${fmt(s.rtt_upper_p50_ms, 2)} ms</td><td>${fmt(s.pass_max_doppler_p95_khz, 1)} kHz</td></tr>`).join("");
+    })();
+  </script>
+</body>
+</html>

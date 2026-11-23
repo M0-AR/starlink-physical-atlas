@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>Migration — Starlink Physical Atlas</title>
+  <meta name="description" content="Shell-specific Starlink migration between 2025 and 2026, population flow, and the difference between catalog attrition and reentry.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html">Overview</a>
+        <a href="atlas.html">3D Atlas</a>
+        <a href="migration.html" aria-current="page">Migration</a>
+        <a href="planes.html">Planes</a>
+        <a href="service.html">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">03 / Migration</span>
+        <h1>The constellation is not one altitude.</h1>
+        <p>Between April and November 2026, the 43° family stayed essentially flat while the 70° family descended by roughly 97 km. A single global average would hide both stories.</p>
+        <div class="meta-row"><span class="tag">Apr 2026 → Nov 2026</span><span class="tag">9,761 matched objects</span><span class="tag">358 catalog missing</span><span class="tag">1,437 new names</span></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="stat-grid" style="margin-top:0">
+          <div class="stat"><strong>+0.01 km</strong><span>43° median change</span></div>
+          <div class="stat"><strong>−12.5 km</strong><span>53.1° median change</span></div>
+          <div class="stat"><strong>−97.4 km</strong><span>70° median change</span></div>
+          <div class="stat"><strong>−83.9 km</strong><span>97.4° median change</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="chart-card reveal">
+            <h3>Median altitude change by family</h3>
+            <p class="chart-sub">Two transitions. The 43° shell is the control case; the 70° and 97.4° shells carry the large moves.</p>
+            <div class="chart-wrap"><canvas id="chart-migration" aria-label="Grouped bar chart of altitude change by family" role="img"></canvas></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Where the objects sit</h3>
+            <p class="chart-sub">Each bubble is a resolved shell. Bubble area scales with population; the axes are median altitude and inclination.</p>
+            <div class="chart-wrap"><canvas id="chart-shells" aria-label="Bubble chart of shells by altitude and inclination" role="img"></canvas></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="chart-card reveal">
+            <h3>April → November population flow</h3>
+            <p class="chart-sub">Matched names, catalog-missing names, and new names. Missing is not proof of reentry.</p>
+            <div class="chart-wrap short"><canvas id="chart-flow" aria-label="Bar chart of population flow" role="img"></canvas></div>
+          </div>
+          <div class="card reveal">
+            <span class="card-kicker">Read this before the chart</span>
+            <h3>What “missing” means</h3>
+            <p>The Kaggle snapshots do not carry NORAD IDs, so cross-snapshot matching uses normalized Starlink names. A name that disappears from the later catalog is <strong>catalog attrition</strong>. It may have reentered, been renamed, or fallen outside the public extract.</p>
+            <p>The measured attrition rate is 0.46% per month for April → November 2026, or about 47 objects per month.</p>
+            <div class="note" style="margin-top:14px">The 97.4° shell has a wide p10–p90 interval because it mixes a stable subgroup with a large descending cohort. The median alone is not the whole distribution.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">The evidence table</span><h2>Migration by family, both periods.</h2></div>
+          <p>Medians and deciles are computed from matched names. The stable fraction is the share within ±10 km.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Period</th><th>Family</th><th>Matched</th><th>Median Δ altitude</th><th>p10</th><th>p90</th><th>Lowered &gt;10 km</th><th>Stable ±10 km</th><th>Raised &gt;10 km</th></tr></thead>
+            <tbody id="migration-body"><tr><td colspan="9" class="faint">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="card reveal">
+            <span class="card-kicker">April 2025 → April 2026</span>
+            <h3>The long transition</h3>
+            <p>This earlier window captures the broad move away from the historical ~550 km operating band. The 53.1° family had 69.6% of matched objects within ±10 km, while the 43° family was still redistributing across shells.</p>
+            <p class="faint small">Matched 6,661 of 7,153; 492 missing; 3,458 new. 0.59% monthly attrition.</p>
+          </div>
+          <div class="card reveal">
+            <span class="card-kicker">April 2026 → November 2026</span>
+            <h3>The settled structure</h3>
+            <p>By late 2026, 94.1% of the 43° matched population is within ±10 km of its April altitude. The 70° and 97.4° families are the moving parts. That is the structure the atlas resolves.</p>
+            <p class="faint small">Matched 9,761 of 10,119; 358 missing; 1,437 new. 0.46% monthly attrition.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a><p style="max-width:360px;margin-top:16px">A reproducible physical atlas of the Starlink constellation.</p></div>
+        <div><h4>Product</h4><a href="overview.html">Overview</a><a href="atlas.html">3D Atlas</a><a href="migration.html">Migration</a><a href="planes.html">Planes</a><a href="service.html">Service</a><a href="all.html">All pages</a></div>
+        <div><h4>Evidence</h4><a href="learn.html">Beginner guide</a><a href="game.html">Neural Orbit</a><a href="https://github.com/M0-AR/starlink-physical-atlas">GitHub</a><a href="https://github.com/M0-AR/starlink-physical-atlas/issues">Issues</a></div>
+      </div>
+      <div class="footer-bottom"><span>MIT code · CC BY 4.0 prose · Apr 2026 tables CC BY-SA 4.0 · Snapshot 2026-11-23 · Not affiliated with SpaceX</span><span><span data-year>2026</span></span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/chart.umd.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    (async function () {
+      const { fmt, fetchJSON } = window.Atlas;
+      const atlas = await fetchJSON("../data/atlas.json");
+      const colors = { "30.5": "#ff8a5c", "43.0": "#5eead4", "53.1": "#7dd3fc", "70.0": "#c084fc", "97.4": "#facc15" };
+      const families = ["43.0", "53.1", "70.0", "97.4"];
+      const early = atlas.migration.apr2025_apr2026;
+      const late = atlas.migration.apr2026_nov2026;
+      const pick = (rows, family) => rows.find((r) => String(r.family) === family) || {};
+
+      new Chart(document.getElementById("chart-migration"), {
+        type: "bar",
+        data: {
+          labels: families.map((f) => f + "°"),
+          datasets: [
+            { label: "Apr 2025 → Apr 2026", data: families.map((f) => pick(early, f).d_alt_median_km), backgroundColor: "rgba(148,183,255,0.35)", borderRadius: 4 },
+            { label: "Apr 2026 → Nov 2026", data: families.map((f) => pick(late, f).d_alt_median_km), backgroundColor: families.map((f) => colors[f]), borderRadius: 4 }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } }, scales: { x: { grid: { display: false } }, y: { title: { display: true, text: "median Δ altitude (km)" }, grid: { color: "rgba(148,183,255,0.1)" } } } }
+      });
+
+      new Chart(document.getElementById("chart-shells"), {
+        type: "bubble",
+        data: {
+          datasets: atlas.shells.map((s) => ({
+            label: `${fmt(s.inc_median_deg, 1)}° / ${fmt(s.alt_median_km, 0)} km`,
+            data: [{ x: s.alt_median_km, y: s.inc_median_deg, r: Math.max(5, Math.sqrt(s.n) * 0.55) }],
+            backgroundColor: (colors[String(s.family)] || "#94a3b8") + "aa",
+            borderColor: colors[String(s.family)] || "#94a3b8"
+          }))
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${fmt(atlas.shells[ctx.datasetIndex].n)} objects` } } }, scales: { x: { title: { display: true, text: "median altitude (km)" }, grid: { color: "rgba(148,183,255,0.1)" } }, y: { title: { display: true, text: "inclination (deg)" }, grid: { color: "rgba(148,183,255,0.1)" } } } }
+      });
+
+      const flow = atlas.migration.flow.find((f) => f.period === "apr2026->nov2026");
+      new Chart(document.getElementById("chart-flow"), {
+        type: "bar",
+        data: { labels: ["Matched", "Catalog missing", "New names"], datasets: [{ data: [flow.matched, flow.missing, flow.new], backgroundColor: ["#5eead4", "#fb7185", "#7dd3fc"], borderRadius: 4 }] },
+        options: { indexAxis: "y", responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { callback: (v) => fmt(v) } }, y: { grid: { display: false } } } }
+      });
+
+      const rows = [];
+      [["Apr 2025 → Apr 2026", early], ["Apr 2026 → Nov 2026", late]].forEach(([label, set]) => {
+        set.forEach((r) => {
+          rows.push(`<tr><td>${label}</td><td class="mono">${fmt(r.family, 1)}°</td><td>${fmt(r.matched)}</td><td class="mono">${fmt(r.d_alt_median_km, 2)} km</td><td>${fmt(r.d_alt_p10_km, 2)}</td><td>${fmt(r.d_alt_p90_km, 2)}</td><td>${fmt(r.frac_lowered_gt10km * 100, 1)}%</td><td>${fmt(r.frac_stable_10km * 100, 1)}%</td><td>${fmt(r.frac_raised_gt10km * 100, 1)}%</td></tr>`);
+        });
+      });
+      document.getElementById("migration-body").innerHTML = rows.join("");
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this atlas, please cite it as below."
+title: "Starlink Physical Atlas: reproducible measurements of the 2025-2026 constellation"
+type: software
+authors:
+  - name: "M0-AR"
+version: 1.0.0
+date-released: "2026-11-23"
+license: MIT
+repository-code: "https://github.com/M0-AR/starlink-physical-atlas"
+url: "https://m0-ar.github.io/starlink-physical-atlas/"
+keywords:
+  - Starlink
+  - LEO
+  - satellite constellation
+  - SGP4
+  - reproducibility
+  - open data
+  - space sustainability
+abstract: >-
+  A reproducible, claim-level verified physical atlas of the Starlink
+  constellation using three public snapshots (2025-04, 2026-04, 2026-11),
+  official SGP4 verification vectors, and published references. The artifact
+  resolves shells, planes, migration, dynamics, service geometry, Doppler and
+  radio-path latency, and reports every result through a generated metrics
+  file, a 45-claim ledger, and a tested static site.

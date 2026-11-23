@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>Neural Orbit — Starlink Physical Atlas</title>
+  <meta name="description" content="A 3D concept game that turns Starlink orbital vocabulary into intuition. Four levels, twenty questions, no account.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="importmap">{"imports":{"three":"../assets/vendor/three.module.min.js"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#game-card">Skip to the game</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html">Overview</a>
+        <a href="atlas.html">3D Atlas</a>
+        <a href="migration.html">Migration</a>
+        <a href="planes.html">Planes</a>
+        <a href="service.html">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="game-shell">
+      <div class="game-stage" aria-hidden="true">
+        <div id="game-canvas"></div>
+        <div class="game-hud">
+          <span class="tag" id="hud-level">Explorer</span>
+          <span class="tag" id="hud-score">0 correct</span>
+        </div>
+      </div>
+
+      <aside class="game-card" id="game-card">
+        <span class="kicker">07 / Neural Orbit</span>
+        <h1>Build the constellation in your head.</h1>
+        <p class="lede">Four levels. Twenty questions. Each correct answer lights the concept it belongs to. The goal is not a streak; it is a connected mental model.</p>
+
+        <div class="game-panel" id="start-panel">
+          <div class="note" style="margin:20px 0">No account. Progress is saved in this browser. The 3D graph is a learning aid, not a physical simulation. Every number comes from the same atlas data as the rest of the site.</div>
+          <button class="button primary" id="start-button" type="button">Begin Explorer <span aria-hidden="true">→</span></button>
+          <div class="game-footer"><span id="best-score">Best: not played yet</span><button class="button small ghost" id="mute-button" type="button" aria-pressed="false">Sound on</button></div>
+        </div>
+
+        <div class="game-panel" id="question-panel" hidden>
+          <div class="progress" aria-hidden="true"><i id="question-progress"></i></div>
+          <div class="game-footer" style="margin-top:8px"><span id="question-count">Question 1 of 5</span><span id="question-level">Explorer</span></div>
+          <h2 class="question-prompt" id="question-prompt"></h2>
+          <div class="answers" id="answers"></div>
+          <div class="explain" id="explain" hidden aria-live="polite"></div>
+          <div class="actions" style="margin-top:16px"><button class="button primary" id="next-button" type="button" hidden>Next question <span aria-hidden="true">→</span></button></div>
+          <div class="game-footer"><span id="running-score">0 correct</span><button class="button small ghost" id="mute-button-2" type="button" aria-pressed="false">Sound on</button></div>
+        </div>
+
+        <div class="game-panel" id="level-panel" hidden>
+          <span class="kicker" id="level-kicker">Level complete</span>
+          <h2 style="margin:10px 0 14px" id="level-title">Explorer complete.</h2>
+          <p class="muted" id="level-summary"></p>
+          <div class="stat-grid" style="grid-template-columns:1fr 1fr;margin-top:18px">
+            <div class="stat"><strong id="level-correct">5 / 5</strong><span>Correct this level</span></div>
+            <div class="stat"><strong id="level-total">5 / 20</strong><span>Total correct</span></div>
+          </div>
+          <div class="actions" style="margin-top:18px"><button class="button primary" id="continue-button" type="button">Continue <span aria-hidden="true">→</span></button></div>
+        </div>
+
+        <div class="game-panel" id="finish-panel" hidden>
+          <span class="kicker">Run complete</span>
+          <h2 style="margin:10px 0 14px">You can read the chain.</h2>
+          <p class="muted" id="final-text"></p>
+          <div class="stat-grid" style="grid-template-columns:1fr 1fr;margin-top:18px">
+            <div class="stat"><strong id="final-score">20 / 20</strong><span>Correct answers</span></div>
+            <div class="stat"><strong id="final-best">20</strong><span>Personal best</span></div>
+          </div>
+          <div class="actions" style="margin-top:18px">
+            <button class="button primary" id="restart-button" type="button">Play again</button>
+            <a class="button" href="learn.html">Read the guide</a>
+            <a class="button ghost" href="overview.html">Open the evidence</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="../assets/js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+name: Bug report
+description: Report a reproducible problem with the pipeline, site, or packaging.
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please include the smallest reproducible case. Do not paste credentials or private data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Data preparation
+        - SGP4 / geometry / metrics
+        - Claim ledger or README
+        - Static site or 3D view
+        - Neural Orbit game
+        - Packaging or CI
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v1.0.0 or commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, Python version, browser, Docker version
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I can reproduce this without private data.
+          required: true

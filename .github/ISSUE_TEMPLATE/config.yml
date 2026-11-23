@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Live site
+    url: https://m0-ar.github.io/starlink-physical-atlas/
+    about: Explore the atlas, beginner guide, and Neural Orbit game.
+  - name: Methods and limitations
+    url: https://github.com/M0-AR/starlink-physical-atlas/blob/main/docs/METHODS.md
+    about: Read the measurement definitions and known limits before filing a claim issue.

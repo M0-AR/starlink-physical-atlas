@@ -1,0 +1,36 @@
+MIT License
+
+Copyright (c) 2026 Starlink Physical Atlas contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+-------------------------------------------------------------------------------
+DATA AND DOCUMENT LICENSES
+
+Code: MIT (above).
+Text, figures and derived tables: CC BY 4.0, except tables derived from the
+April 2026 Kaggle snapshot, which are CC BY-SA 4.0 as required by that
+dataset's license.
+Source data retain their original licenses:
+  - CelesTrak GP and SATCAT data: public, attribution requested
+    (https://celestrak.org/).
+  - "Starlink Satellite TLE/CSV dataset (April 2025)" (Kaggle, vijayj0shi):
+    MIT.
+  - "CelesTrak Active Satellite Dataset April_2026" (Kaggle, bhaktimudgal):
+    CC BY-SA 4.0.

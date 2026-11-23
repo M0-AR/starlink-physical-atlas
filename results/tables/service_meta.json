@@ -1,0 +1,17 @@
+{
+  "n_satellites": 9938,
+  "n_steps": 5760,
+  "dt_s": 15.0,
+  "duration_h": 24.0,
+  "t0": "2026-11-23T00:00:00+00:00",
+  "t1": "2026-11-23T23:59:45+00:00",
+  "elev_mask_deg": 25.0,
+  "sgp4_error_rate": 0.0,
+  "frequencies_hz": {
+    "downlink_ku_hz": 11325000000.0,
+    "uplink_ku_hz": 14250000000.0,
+    "reference_12ghz_hz": 12000000000.0
+  },
+  "runtime_s": 76.9,
+  "n_sites": 10
+}

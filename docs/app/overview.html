@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>Overview — Starlink Physical Atlas</title>
+  <meta name="description" content="Executive overview of the 2026 Starlink snapshot: population, altitude, shells, launch cadence, and the 45-claim evidence ledger.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html" aria-current="page">Overview</a>
+        <a href="atlas.html">3D Atlas</a>
+        <a href="migration.html">Migration</a>
+        <a href="planes.html">Planes</a>
+        <a href="service.html">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">01 / Overview</span>
+        <h1>What is up there — and how strongly do we know it?</h1>
+        <p>One snapshot, one evidence chain. The 2026-11-23 catalog resolves into 11,198 objects, 11 altitude shells, five inclination families, and a claim ledger that states the strength of every headline number.</p>
+        <div class="meta-row">
+          <span class="tag">Snapshot 2026-11-23</span>
+          <span class="tag">11,198 objects</span>
+          <span class="tag">45 claims</span>
+          <span class="tag">MIT / CC BY 4.0</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="stat-grid" style="margin-top:0">
+          <div class="stat"><strong id="stat-objects">11,198</strong><span>Objects in snapshot</span></div>
+          <div class="stat"><strong id="stat-share">66.25%</strong><span>Of active catalog</span></div>
+          <div class="stat"><strong id="stat-alt">465.5 km</strong><span>Median altitude</span></div>
+          <div class="stat"><strong id="stat-below">97.95%</strong><span>Below 500 km</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="chart-card reveal">
+            <h3>Catalog growth by launch year</h3>
+            <p class="chart-sub">Satellites in the 2026 snapshot, grouped by launch year. This is a survivor view, not a launch manifest.</p>
+            <div class="chart-wrap"><canvas id="chart-launches" aria-label="Bar chart of satellites by launch year" role="img"></canvas></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Shell population</h3>
+            <p class="chart-sub">Eleven resolved altitude shells. The 53.1° / 463 km shell alone holds 3,548 objects.</p>
+            <div class="chart-wrap"><canvas id="chart-shells" aria-label="Bar chart of satellites per shell" role="img"></canvas></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="chart-card reveal">
+            <h3>Evidence status</h3>
+            <p class="chart-sub">Every claim is classified. External-only is a label, not a failure; it marks the boundary of this study.</p>
+            <div class="chart-wrap short"><canvas id="chart-claims" aria-label="Doughnut chart of claim statuses" role="img"></canvas></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Above 500 km</h3>
+            <p class="chart-sub">230 objects sit at or above 500 km. The bands show where the high-altitude tail lives.</p>
+            <div class="chart-wrap short"><canvas id="chart-high" aria-label="Bar chart of objects above 500 kilometres" role="img"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Headline findings</span><h2>Five numbers that change the story.</h2></div>
+          <p>These are not independent facts. They are the output of one frozen snapshot and one reproducible pipeline.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal"><span class="card-kicker">Population</span><span class="metric">66.25%</span><p>Starlink accounts for 11,199 of 16,904 active catalog objects in the 2026-11-23 comparison. The numerator matches the GP snapshot.</p></div>
+          <div class="card reveal"><span class="card-kicker">Altitude</span><span class="metric">465.5 km</span><p>The median is far below the old 550 km shorthand. 97.95% of objects are below 500 km; the maximum is 574.6 km.</p></div>
+          <div class="card reveal"><span class="card-kicker">Structure</span><span class="metric">11 / 5</span><p>Eleven altitude shells across five inclination families. 92.20% of objects are assigned to a resolved shell; 873 remain unassigned.</p></div>
+          <div class="card reveal"><span class="card-kicker">Dynamics</span><span class="metric">−97 km</span><p>The 70° family moved by about −97 km between April and November 2026. The 43° family stayed essentially flat.</p></div>
+          <div class="card reveal"><span class="card-kicker">Service geometry</span><span class="metric">55 visible</span><p>A 25° elevation mask leaves a median of 55 visible satellites per site. The best-satellite handover interval is 30 seconds.</p></div>
+          <div class="card reveal"><span class="card-kicker">Evidence</span><span class="metric">0 contradicted</span><p>Of 45 claims: 20 verified, 7 consistent, 5 partially verified, 13 external-only. The ledger has no contradicted or untested claims.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Claim ledger</span><h2>Read the evidence, not just the conclusion.</h2></div>
+          <p>Filter by status. The measured text is rendered from the same template engine as the README, so the site and the paper cannot drift silently.</p>
+        </div>
+        <div class="actions" id="claim-filters" style="margin:0 0 16px">
+          <button class="button small primary" type="button" data-filter="all">All 45</button>
+          <button class="button small" type="button" data-filter="verified">Verified</button>
+          <button class="button small" type="button" data-filter="consistent">Consistent</button>
+          <button class="button small" type="button" data-filter="partially_verified">Partially verified</button>
+          <button class="button small" type="button" data-filter="external_only">External only</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Claim</th><th>Status</th><th>Measured / source</th></tr></thead>
+            <tbody id="claims-body"><tr><td colspan="4" class="faint">Loading the claim ledger…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="small faint" style="margin-top:10px">External-only claims rely on a named outside source and are not re-measured here. See the repository for the full ledger and references.</p>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="card reveal">
+            <span class="card-kicker">Snapshot history</span>
+            <h3>Three frozen checkpoints</h3>
+            <div class="table-wrap" style="margin-top:14px">
+              <table>
+                <thead><tr><th>Snapshot</th><th>Objects</th><th>Median epoch</th></tr></thead>
+                <tbody id="snapshot-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card reveal">
+            <span class="card-kicker">Data products</span>
+            <h3>Take the numbers with you</h3>
+            <p>The site reads generated JSON, not the research CSVs. The same data is available for inspection and reuse.</p>
+            <div class="actions" style="margin-top:16px">
+              <a class="button small" href="../data/atlas.json">atlas.json</a>
+              <a class="button small" href="../data/satellites.json">satellites.json</a>
+              <a class="button small" href="https://github.com/M0-AR/starlink-physical-atlas">Repository</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="note"><strong>What this page does not claim:</strong> the browser atlas is a two-body visualisation of mean elements. The scientific metrics come from the SGP4 pipeline and the frozen tables. Public data lacks gateway coordinates and cross-snapshot NORAD IDs, so service latency is a radio-path bound and missing objects are catalog attrition, not confirmed reentry.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a><p style="max-width:360px;margin-top:16px">A reproducible physical atlas of the Starlink constellation.</p></div>
+        <div><h4>Product</h4><a href="overview.html">Overview</a><a href="atlas.html">3D Atlas</a><a href="migration.html">Migration</a><a href="planes.html">Planes</a><a href="service.html">Service</a><a href="all.html">All pages</a></div>
+        <div><h4>Evidence</h4><a href="learn.html">Beginner guide</a><a href="game.html">Neural Orbit</a><a href="https://github.com/M0-AR/starlink-physical-atlas">GitHub</a><a href="https://github.com/M0-AR/starlink-physical-atlas/issues">Issues</a></div>
+      </div>
+      <div class="footer-bottom"><span>MIT code · CC BY 4.0 prose · Apr 2026 tables CC BY-SA 4.0 · Snapshot 2026-11-23 · Not affiliated with SpaceX</span><span><span data-year>2026</span></span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/chart.umd.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    (async function () {
+      const { fmt, fetchJSON } = window.Atlas;
+      const atlas = await fetchJSON("../data/atlas.json");
+      const h = atlas.headline;
+      document.getElementById("stat-objects").textContent = fmt(h.objects);
+      document.getElementById("stat-share").textContent = fmt(h.active_share_pct, 2) + "%";
+      document.getElementById("stat-alt").textContent = fmt(h.median_altitude_km, 1) + " km";
+      document.getElementById("stat-below").textContent = fmt(h.below_500_pct, 2) + "%";
+
+      const launches = atlas.launches.rows;
+      new Chart(document.getElementById("chart-launches"), {
+        type: "bar",
+        data: {
+          labels: launches.map((r) => r.launch_year),
+          datasets: [{ data: launches.map((r) => r.satellites), backgroundColor: "rgba(103,232,249,0.62)", borderRadius: 4, borderSkipped: false }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true, ticks: { callback: (v) => fmt(v) } } } }
+      });
+
+      const shells = atlas.shells.slice().sort((a, b) => b.n - a.n);
+      new Chart(document.getElementById("chart-shells"), {
+        type: "bar",
+        data: {
+          labels: shells.map((r) => `${fmt(r.inc_median_deg, 1)}° / ${fmt(r.alt_median_km, 0)} km`),
+          datasets: [{ data: shells.map((r) => r.n), backgroundColor: shells.map((r) => familyColor(r.family)), borderRadius: 4, borderSkipped: false }]
+        },
+        options: { indexAxis: "y", responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { callback: (v) => fmt(v) } }, y: { grid: { display: false } } } }
+      });
+
+      const statuses = atlas.claims.statuses;
+      new Chart(document.getElementById("chart-claims"), {
+        type: "doughnut",
+        data: { labels: Object.keys(statuses).map(prettyStatus), datasets: [{ data: Object.values(statuses), backgroundColor: Object.keys(statuses).map(statusColor), borderWidth: 0, hoverOffset: 4 }] },
+        options: { responsive: true, maintainAspectRatio: false, cutout: "66%", plugins: { legend: { position: "bottom" } } }
+      });
+
+      const bands = atlas.altitude.above_500_bands;
+      new Chart(document.getElementById("chart-high"), {
+        type: "bar",
+        data: { labels: ["500–515", "515–535", "535–560", "560+"], datasets: [{ data: [bands["500_515"], bands["515_535"], bands["535_560"], bands["560_plus"]], backgroundColor: ["rgba(250,204,21,0.75)", "rgba(250,204,21,0.55)", "rgba(250,204,21,0.38)", "rgba(250,204,21,0.24)"], borderRadius: 4, borderSkipped: false }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { beginAtZero: true, ticks: { precision: 0 } } } }
+      });
+
+      const tbody = document.getElementById("claims-body");
+      let filter = "all";
+      const render = () => {
+        const rows = atlas.claims.items.filter((c) => filter === "all" || c.status === filter);
+        tbody.innerHTML = rows.map((c) => `<tr><td class="mono">${c.id}</td><td style="white-space:normal;min-width:260px">${escapeHtml(c.claim)}</td><td><span class="status ${c.status}">${prettyStatus(c.status)}</span></td><td style="white-space:normal;min-width:280px">${escapeHtml(c.measured || c.notes || "")}</td></tr>`).join("");
+      };
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        button.addEventListener("click", () => {
+          filter = button.getAttribute("data-filter");
+          document.querySelectorAll("[data-filter]").forEach((b) => b.classList.remove("primary"));
+          button.classList.add("primary");
+          render();
+        });
+      });
+      render();
+
+      document.getElementById("snapshot-body").innerHTML = Object.entries(atlas.snapshots).map(([key, s]) => `<tr><td class="mono">${key}</td><td>${fmt(s.n)}</td><td>${String(s.epoch_median).slice(0, 10)}</td></tr>`).join("");
+
+      function familyColor(family) {
+        const map = { "30.5": "#ff8a5c", "43.0": "#5eead4", "53.1": "#7dd3fc", "70.0": "#c084fc", "97.4": "#facc15", other: "#94a3b8" };
+        return map[String(family)] || map.other;
+      }
+      function prettyStatus(status) { return String(status).replaceAll("_", " "); }
+      function statusColor(status) { return { verified: "#86efac", consistent: "#7dd3fc", partially_verified: "#facc15", external_only: "#c084fc", contradicted: "#fb7185", not_tested: "#94a3b8" }[status] || "#94a3b8"; }
+      function escapeHtml(value) { return String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    })();
+  </script>
+</body>
+</html>

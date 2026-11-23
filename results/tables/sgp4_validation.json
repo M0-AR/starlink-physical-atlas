@@ -1,0 +1,11 @@
+{
+  "cases_declared": 32,
+  "cases_with_vectors": 31,
+  "vectors_compared": 640,
+  "propagation_errors": 1,
+  "max_pos_km": 1.1708084947102836e-07,
+  "p99_pos_km": 8.439314268903202e-08,
+  "median_pos_km": 7.06901502481523e-09,
+  "max_vel_km_s": 8.528685513976665e-10,
+  "p99_vel_km_s": 8.37634753254565e-10
+}

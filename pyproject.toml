@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "starlink-physical-atlas"
+version = "1.0.0"
+description = "A reproducible, open-data physical atlas of the Starlink constellation (2025-2026)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "M0-AR" }]
+keywords = ["starlink", "leo", "satellite", "sgp4", "reproducibility", "orbital-mechanics", "space-sustainability"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Education",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Astronomy",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+dependencies = [
+  "numpy==2.5.5",
+  "pandas==3.1.1",
+  "scipy==1.18.1",
+  "matplotlib==3.11.2",
+  "sgp4==2.27",
+  "requests==2.34.2",
+  "pytest==9.2.0",
+]
+
+[project.optional-dependencies]
+dev = ["build>=1.2.2", "twine>=5.1"]
+
+[project.urls]
+Homepage = "https://m0-ar.github.io/starlink-physical-atlas/"
+Documentation = "https://github.com/M0-AR/starlink-physical-atlas/blob/main/docs/METHODS.md"
+Repository = "https://github.com/M0-AR/starlink-physical-atlas"
+Issues = "https://github.com/M0-AR/starlink-physical-atlas/issues"
+Changelog = "https://github.com/M0-AR/starlink-physical-atlas/blob/main/CHANGELOG.md"
+"Live demo" = "https://m0-ar.github.io/starlink-physical-atlas/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

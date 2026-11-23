@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>Planes — Starlink Physical Atlas</title>
+  <meta name="description" content="Effective Starlink plane anatomy after common-epoch J2 rectification, with occupancy, spacing, and the limits of public design inference.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html">Overview</a>
+        <a href="atlas.html">3D Atlas</a>
+        <a href="migration.html">Migration</a>
+        <a href="planes.html" aria-current="page">Planes</a>
+        <a href="service.html">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="eyebrow">04 / Planes</span>
+        <h1>Structure behind the points.</h1>
+        <p>A TLE snapshot spans days, and RAAN precesses under Earth’s equatorial bulge. Without rectification, the plane lattice smears by up to ~18°. The atlas removes that predictable clock before counting effective planes.</p>
+        <div class="meta-row"><span class="tag">Common-epoch RAAN</span><span class="tag">10 measured shells</span><span class="tag">J2 median error 0.066%</span><span class="tag">Effective, not design</span></div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-3">
+          <div class="card reveal"><span class="card-kicker">43° / 483 km</span><span class="metric">92</span><p>Effective planes, median occupancy 32.5, maximum 51. The largest population and the most complete lattice.</p></div>
+          <div class="card reveal"><span class="card-kicker">53.1° / 463 km</span><span class="metric">124</span><p>Effective planes, median occupancy 29.5. Six tight groups and a 4.8% tight fraction; spacing CV 0.52.</p></div>
+          <div class="card reveal"><span class="card-kicker">97.4° / 465 km</span><span class="metric">62</span><p>Effective planes, median occupancy 24. The 72.6% tight fraction is the highest; merged groups contaminate simple spacing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="grid-2">
+          <div class="chart-card reveal">
+            <h3>Effective plane count</h3>
+            <p class="chart-sub">RAAN clusters after J2 rectification. Small shells can have very few effective planes.</p>
+            <div class="chart-wrap"><canvas id="chart-planes" aria-label="Bar chart of effective plane counts" role="img"></canvas></div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Occupancy: median vs maximum</h3>
+            <p class="chart-sub">A high maximum with a low median indicates uneven filling or merged clusters.</p>
+            <div class="chart-wrap"><canvas id="chart-occupancy" aria-label="Bar chart of plane occupancy" role="img"></canvas></div>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="chart-card reveal">
+            <h3>RAAN dispersion before and after rectification</h3>
+            <p class="chart-sub">The p90 dispersion is shown. Rectification removes the secular J2 drift; it does not invent missing planes.</p>
+            <div class="chart-wrap"><canvas id="chart-raan" aria-label="Bar chart of RAAN dispersion" role="img"></canvas></div>
+          </div>
+          <div class="card reveal">
+            <span class="card-kicker">The key distinction</span>
+            <h3>Measured lattice ≠ Walker design.</h3>
+            <p>An effective plane is a cluster of similar RAAN. Merged or partially filled planes change the measured lattice. The atlas reports what the public data shows, not what a clean design document might specify.</p>
+            <p>The 97.4° shell is the clearest warning: 45 tight groups, 72.6% tight fraction, and a spacing CV of 1.62. Its effective count is real, but a simple “planes × satellites per plane” reading would be misleading.</p>
+            <div class="note" style="margin-top:14px"><strong>J2 check:</strong> the median absolute relative error between measured nodal drift and the J2 prediction is 0.066%; p95 is 0.47%; maximum is 0.915%.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Shell table</span><h2>The plane anatomy, measured.</h2></div>
+          <p>Occupancy, spacing, tight groups, and the maximum in-plane mean-anomaly gap. Blank values mean the shell did not produce a stable plane lattice.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Family</th><th>Shell</th><th>n</th><th>Planes</th><th>Occupancy median</th><th>Max</th><th>Spacing median</th><th>Spacing CV</th><th>Tight fraction</th><th>MA gap p50</th></tr></thead>
+            <tbody id="planes-body"><tr><td colspan="10" class="faint">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a><p style="max-width:360px;margin-top:16px">A reproducible physical atlas of the Starlink constellation.</p></div>
+        <div><h4>Product</h4><a href="overview.html">Overview</a><a href="atlas.html">3D Atlas</a><a href="migration.html">Migration</a><a href="planes.html">Planes</a><a href="service.html">Service</a><a href="all.html">All pages</a></div>
+        <div><h4>Evidence</h4><a href="learn.html">Beginner guide</a><a href="game.html">Neural Orbit</a><a href="https://github.com/M0-AR/starlink-physical-atlas">GitHub</a><a href="https://github.com/M0-AR/starlink-physical-atlas/issues">Issues</a></div>
+      </div>
+      <div class="footer-bottom"><span>MIT code · CC BY 4.0 prose · Apr 2026 tables CC BY-SA 4.0 · Snapshot 2026-11-23 · Not affiliated with SpaceX</span><span><span data-year>2026</span></span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/vendor/chart.umd.min.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script>
+    (async function () {
+      const { fmt, fetchJSON } = window.Atlas;
+      const atlas = await fetchJSON("../data/atlas.json");
+      const colors = { "30.5": "#ff8a5c", "43.0": "#5eead4", "53.1": "#7dd3fc", "70.0": "#c084fc", "97.4": "#facc15" };
+      const planes = atlas.planes.slice().sort((a, b) => a.alt_median_km - b.alt_median_km);
+      const labels = planes.map((p) => `${fmt(p.family, 1)}° / ${fmt(p.shell_km, 0)} km`);
+
+      new Chart(document.getElementById("chart-planes"), {
+        type: "bar",
+        data: { labels, datasets: [{ data: planes.map((p) => p.planes), backgroundColor: planes.map((p) => (colors[String(p.family)] || "#94a3b8") + "cc"), borderRadius: 4 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: true, ticks: { precision: 0 } } } }
+      });
+
+      new Chart(document.getElementById("chart-occupancy"), {
+        type: "bar",
+        data: { labels, datasets: [
+          { label: "Median", data: planes.map((p) => p.occupancy_median), backgroundColor: "rgba(103,232,249,0.62)", borderRadius: 4 },
+          { label: "Maximum", data: planes.map((p) => p.occupancy_max), backgroundColor: "rgba(192,132,252,0.5)", borderRadius: 4 }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: true } } }
+      });
+
+      new Chart(document.getElementById("chart-raan"), {
+        type: "bar",
+        data: { labels, datasets: [
+          { label: "Raw p90", data: planes.map((p) => p.raw ? p.raw.p90_deg : null), backgroundColor: "rgba(251,113,133,0.45)", borderRadius: 4 },
+          { label: "Rectified p90", data: planes.map((p) => p.rectified ? p.rectified.p90_deg : null), backgroundColor: "rgba(94,234,212,0.6)", borderRadius: 4 }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } }, scales: { x: { grid: { display: false }, ticks: { maxRotation: 55, minRotation: 35 } }, y: { beginAtZero: true, title: { display: true, text: "RAAN dispersion (deg)" } } } }
+      });
+
+      document.getElementById("planes-body").innerHTML = planes.map((p) => `<tr><td class="mono">${fmt(p.family, 1)}°</td><td>${fmt(p.shell_km, 0)} km</td><td>${fmt(p.n)}</td><td>${p.planes || 0}</td><td>${p.occupancy_median === null ? "—" : fmt(p.occupancy_median, 1)}</td><td>${p.occupancy_max || 0}</td><td>${p.spacing_median_deg === null ? "—" : fmt(p.spacing_median_deg, 2) + "°"}</td><td>${p.spacing_cv === null ? "—" : fmt(p.spacing_cv, 3)}</td><td>${p.tight_fraction === null ? "—" : fmt(p.tight_fraction * 100, 1) + "%"}</td><td>${p.ma_gap_median_deg === null ? "—" : fmt(p.ma_gap_median_deg, 1) + "°"}</td></tr>`).join("");
+    })();
+  </script>
+</body>
+</html>

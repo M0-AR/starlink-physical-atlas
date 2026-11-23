@@ -1,0 +1,39 @@
+name: Claim or data correction
+description: Report a measurement, evidence, or wording problem with a specific claim.
+title: "[claim] "
+labels: ["claim", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking the evidence. Please point to the exact claim and the source that contradicts or qualifies it.
+  - type: input
+    id: claim
+    attributes:
+      label: Claim
+      description: Quote the claim or link to the line in README, results/CLAIMS.md, or the site.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Include the source, epoch, row count, and a stable URL or DOI where possible.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: What should the claim, status, or method say instead?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I have not included private, operational, or export-controlled data.
+          required: true
+        - label: I understand that the maintainers may mark this as external-only or not tested.
+          required: true

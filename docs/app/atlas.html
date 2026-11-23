@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <title>3D Atlas — Starlink Physical Atlas</title>
+  <meta name="description" content="Explore 11,198 Starlink objects in 3D, colored by inclination family, with shell rings, time controls, and hover details.">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="importmap">{"imports":{"three":"../assets/vendor/three.module.min.js"}}</script>
+</head>
+<body class="atlas-page">
+  <a class="skip-link" href="#atlas-panel">Skip to controls</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span>Starlink Physical Atlas<small>Open orbital evidence</small></span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a href="overview.html">Overview</a>
+        <a href="atlas.html" aria-current="page">3D Atlas</a>
+        <a href="migration.html">Migration</a>
+        <a href="planes.html">Planes</a>
+        <a href="service.html">Service</a>
+        <a href="learn.html">Learn</a>
+        <a class="nav-cta" href="https://github.com/M0-AR/starlink-physical-atlas">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="atlas-shell" aria-label="3D constellation explorer">
+      <div id="atlas-canvas"></div>
+      <aside class="atlas-panel" id="atlas-panel">
+        <span class="kicker">02 / 3D Atlas</span>
+        <h1>The constellation, in motion.</h1>
+        <p class="lede">11,198 mean elements from the 2026-11-23 snapshot. Points are colored by inclination family. Altitude is exaggerated for legibility; the scientific metrics come from the SGP4 pipeline.</p>
+        <div class="atlas-controls">
+          <div class="control-group">
+            <span class="control-label">Inclination families <span id="family-count">5 + other</span></span>
+            <div class="family-toggles" id="family-toggles"></div>
+          </div>
+          <div class="control-group">
+            <label for="altitude-scale">Altitude exaggeration <output id="altitude-value">2.5×</output></label>
+            <input id="altitude-scale" type="range" min="1" max="5" step="0.1" value="2.5">
+          </div>
+          <div class="control-group">
+            <label for="time-speed">Time warp <output id="speed-value">60×</output></label>
+            <input id="time-speed" type="range" min="0" max="240" step="10" value="60">
+          </div>
+          <div class="control-group">
+            <label class="family-toggle" for="toggle-shells"><input id="toggle-shells" type="checkbox" checked> Show shell rings</label>
+            <label class="family-toggle" for="toggle-stars" style="margin-top:7px"><input id="toggle-stars" type="checkbox" checked> Show star field</label>
+          </div>
+        </div>
+        <div class="atlas-actions">
+          <button class="button small primary" id="pause-button" type="button">Pause</button>
+          <button class="button small" id="reset-button" type="button">Reset view</button>
+        </div>
+        <div class="note" style="margin-top:14px">Drag to rotate · scroll to zoom · hover a point for details. The visual is a two-body cloud; it is not a precision propagator.</div>
+      </aside>
+
+      <div class="atlas-readout" aria-live="polite">
+        <div class="big" id="atlas-visible">11,198</div>
+        <div class="sub">objects after family filters</div>
+        <div class="sub" style="margin-top:8px">Simulation clock <span class="mono" id="atlas-clock">T+ 00:00:00</span></div>
+      </div>
+
+      <div class="atlas-legend">
+        <strong style="color:var(--text)">Inclination family</strong>
+        <div class="row"><span class="swatch" style="--c:#ff8a5c"></span>30.5° · 28 objects</div>
+        <div class="row"><span class="swatch" style="--c:#5eead4"></span>43.0° · 3,551 objects</div>
+        <div class="row"><span class="swatch" style="--c:#7dd3fc"></span>53.1° · 4,526 objects</div>
+        <div class="row"><span class="swatch" style="--c:#c084fc"></span>70.0° · 773 objects</div>
+        <div class="row"><span class="swatch" style="--c:#facc15"></span>97.4° · 1,447 objects</div>
+        <div class="row"><span class="swatch" style="--c:#94a3b8"></span>other · 873 objects</div>
+      </div>
+
+      <div class="atlas-selected" id="atlas-selected">
+        <strong>Click a point</strong>
+        <div class="sub" style="color:var(--faint);font-size:11px;margin-top:3px">Satellite name, altitude, inclination, RAAN, and shell will appear here.</div>
+      </div>
+
+      <div class="atlas-tooltip" id="atlas-tooltip" role="status"></div>
+      <div class="atlas-fallback" id="atlas-fallback" hidden>
+        <div><span class="kicker">WebGL unavailable</span><h2 style="margin:12px 0">The 3D scene could not start.</h2><p class="muted">The charts and evidence pages still work. Try a WebGL-enabled browser, or open the overview.</p><a class="button primary" href="overview.html">Open the overview</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="../assets/js/atlas.js"></script>
+</body>
+</html>

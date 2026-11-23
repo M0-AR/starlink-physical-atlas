@@ -1,0 +1,102 @@
+# Study parameters for the Starlink physical atlas.
+# These values mirror the defaults in src/atlas and experiments/; the YAML is
+# the human-readable contract, not a runtime configuration file.
+
+schema_version: 1
+
+study:
+  title: "Starlink Physical Atlas: reproducible measurements of the 2025-2026 constellation"
+  data_cutoff: "2026-11-23"
+  time_standard: UTC
+
+snapshots:
+  nov2026:
+    date: "2026-11-23"
+    role: "primary snapshot"
+    source: "CelesTrak GP, GROUP=starlink"
+    license: "CelesTrak public data"
+  apr2026:
+    date: "2026-04-03"
+    role: "migration midpoint"
+    source: "Kaggle public snapshot"
+    license: "CC BY-SA 4.0"
+  apr2025:
+    date: "2025-04-11"
+    role: "historical baseline"
+    source: "Kaggle public snapshot"
+    license: "MIT"
+
+altitude:
+  model: "circular Keplerian from TLE mean motion"
+  below_500_km_threshold: 500.0
+
+shell_resolution:
+  histogram_bin_km: 2.0
+  min_objects_per_peak: 25
+  assignment_window_km: 8.0
+  families_deg: [30.5, 43.0, 53.1, 70.0, 97.4]
+
+planes:
+  raan_rectification: "J2 nodal regression to a common reference epoch"
+  gap_threshold_deg: 0.2
+  min_group_size: 10
+  sensitivity_thresholds_deg: [0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.5]
+
+migration:
+  match_key: "normalized Starlink name (Kaggle tables lack NORAD); NORAD for CelesTrak-internal checks"
+  lowered_threshold_km: 10.0
+
+j2:
+  panel_satellites: 27
+  fit: "unwrapped RAAN against time"
+  reference: "standard J2 nodal-regression rate at mean inclination and altitude"
+
+maneuvers:
+  panel: "same 27-satellite TLE series"
+  floor_km_per_step: 1.5
+  sigma: 6.0
+  threshold: "max(floor, sigma * robust scatter)"
+
+decay:
+  model: "linearized altitude rate from TLE ndot"
+  caveat: "not an operational lifetime prediction"
+
+service:
+  sites:
+    - Munich
+    - Berlin
+    - Zurich
+    - Vienna
+    - Milan
+    - Paris
+    - London
+    - Tromso
+    - Longyearbyen
+    - Singapore
+  duration_h: 24
+  step_s: 15
+  steps: 5760
+  elevation_mask_deg: 25
+  altitude_filter_km: [400, 600]
+  serving_policy: "highest elevation"
+  propagation_chunk: 48
+  latency_model: "four-leg bent-pipe radio path"
+  gateway_lower_bound: "sub-satellite point"
+  gateway_upper_bound: "co-located with user"
+  excluded: ["fiber", "processing", "scheduling", "weather", "load"]
+
+frequencies_hz:
+  ku_downlink: 11.325e9
+  reference_12ghz: 12.0e9
+  ku_uplink: 14.25e9
+
+claims:
+  config: "configs/claims.json"
+  statuses: [verified, consistent, partially_verified, external_only, contradicted, not_tested]
+
+outputs:
+  metrics: "results/metrics.json"
+  claims_csv: "results/claims.csv"
+  claims_md: "results/CLAIMS.md"
+  figures: "results/figures"
+  readme: "README.md"

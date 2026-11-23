@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "generated_by": "experiments/06_claims.py",
+  "status_legend": {
+    "verified": "Directly measured in this study and matching the claim.",
+    "consistent": "Our measurement supports the claim but does not uniquely establish it.",
+    "partially_verified": "Some components are measured; others remain external or untested.",
+    "external_only": "Not tested here; relies on an operator, public report, or cited paper.",
+    "contradicted": "Our measurement conflicts with the claim.",
+    "not_tested": "No measurement and no adequate external source."
+  },
+  "status_order": ["verified", "consistent", "partially_verified", "external_only", "contradicted", "not_tested"],
+  "claims": [
+    {
+      "id": "P01",
+      "section": "Population and orbit",
+      "claim": "More than 11,000 Starlink objects are in orbit.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "{{metrics.snapshots.nov2026.n|,}} objects in the 2026-11-23 CelesTrak GP snapshot; SATCAT contains {{metrics.satcat.total|,}}.",
+      "evidence": ["metrics.snapshots.nov2026.n", "metrics.satcat.total", "manifest.snapshots.nov2026.rows"],
+      "references": [],
+      "notes": "Counts are on-orbit objects, not historical launches."
+    },
+    {
+      "id": "P02",
+      "section": "Population and orbit",
+      "claim": "Starlink is roughly two of every three active satellites.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "{{metrics.active_catalog.starlink|,}} of {{metrics.active_catalog.total|,}} active catalog objects = {{metrics.active_catalog.share_pct|.2f}}%.",
+      "evidence": ["metrics.active_catalog.starlink", "metrics.active_catalog.total", "metrics.active_catalog.share_pct"],
+      "references": [],
+      "notes": "Active catalog is a separate 2026-11-23 snapshot; the numerator matches the Starlink GP count."
+    },
+    {
+      "id": "P03",
+      "section": "Population and orbit",
+      "claim": "Orbital speed is about 27,000 km/h.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "Median circular speed {{metrics.altitude.speed_median_kmh|,}} km/h from the snapshot's semi-major axes.",
+      "evidence": ["metrics.altitude.speed_median_kmh"],
+      "references": [],
+      "notes": "Circular approximation; individual elliptical speeds vary."
+    },
+    {
+      "id": "P04",
+      "section": "Population and orbit",
+      "claim": "The orbital period is about 1.5 h, or roughly 15 orbits per day.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "Median period {{metrics.altitude.period_median_min|.2f}} min = {{metrics.altitude.orbits_per_day|.2f}} orbits/day.",
+      "evidence": ["metrics.altitude.period_median_min", "metrics.altitude.orbits_per_day"],
+      "references": [],
+      "notes": "Keplerian period from the TLE semi-major axis."
+    },
+    {
+      "id": "P05",
+      "section": "Population and orbit",
+      "claim": "The constellation operates near 500 km, roughly 70 times lower than GEO.",
+      "status": "consistent",
+      "source": "transcript",
+      "measured": "Median {{metrics.altitude.median_km|.1f}} km (p05 {{metrics.altitude.p05_km|.1f}}, p95 {{metrics.altitude.p95_km|.1f}}); {{metrics.altitude.pct_below_500|.2f}}% below 500 km; GEO/median = {{metrics.altitude.geo_to_median_ratio|.1f}}x.",
+      "evidence": ["metrics.altitude.median_km", "metrics.altitude.pct_below_500", "metrics.altitude.geo_to_median_ratio"],
+      "references": ["ali2026", "ronchetti2026"],
+      "notes": "The distribution is not a single 500 km shell; 2.05% of objects are at or above 500 km."
+    },
+    {
+      "id": "P06",
+      "section": "Population and orbit",
+      "claim": "The constellation uses several inclination families and resolved altitude shells.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.shells.n_families}} inclination families ({{metrics.shells.families|join}}), {{metrics.shells.n}} resolved shells; {{metrics.shells.n_assigned|,}} of {{metrics.snapshots.nov2026.n|,}} objects assigned ({{metrics.shells.coverage_pct|.2f}}%).",
+      "evidence": ["metrics.shells.n_families", "metrics.shells.n", "metrics.shells.n_assigned", "metrics.shells.coverage_pct"],
+      "references": [],
+      "notes": "Shell detection uses 2 km altitude histogram peaks, a 25-object minimum, and a +/-8 km assignment window."
+    },
+    {
+      "id": "P07",
+      "section": "Population and orbit",
+      "claim": "Four large operational shells dominate the November 2026 snapshot.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "43.0 deg / 483 km n={{metrics.shells.by_key.43_483.n|,}}; 53.1 deg / 463 km n={{metrics.shells.by_key.53p1_463.n|,}}; 70.0 deg / 475 km n={{metrics.shells.by_key.70_475.n|,}}; 97.4 deg / 465 km n={{metrics.shells.by_key.97p4_465.n|,}}.",
+      "evidence": ["metrics.shells.by_key.43_483.n", "metrics.shells.by_key.53p1_463.n", "metrics.shells.by_key.70_475.n", "metrics.shells.by_key.97p4_465.n"],
+      "references": [],
+      "notes": "These four shells account for most of the assigned population; smaller deployment shells remain."
+    },
+    {
+      "id": "P08",
+      "section": "Population and orbit",
+      "claim": "A small but non-zero population sits at or above 500 km.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.altitude.n_above_500}} objects ({{metrics.altitude.above_500_pct|.2f}}%): 500-515 km {{metrics.altitude.above_500_bands.500_515}}, 515-535 km {{metrics.altitude.above_500_bands.515_535}}, 535-560 km {{metrics.altitude.above_500_bands.535_560}}, >=560 km {{metrics.altitude.above_500_bands.560_plus}}.",
+      "evidence": ["metrics.altitude.n_above_500", "metrics.altitude.above_500_pct", "metrics.altitude.above_500_bands"],
+      "references": [],
+      "notes": "The 230 objects are a mixture of the 70 deg 525 km shell and a small high-altitude tail; they do not overturn the 'about 500 km' statement."
+    },
+    {
+      "id": "P09",
+      "section": "Population and orbit",
+      "claim": "The plane lattice is not a single clean Walker set.",
+      "status": "consistent",
+      "source": "derived",
+      "measured": "Effective RAAN groups: 43 deg / 483 km {{metrics.planes.by_key.43_483.planes}} (spacing {{metrics.planes.by_key.43_483.spacing_median_deg|.2f}} deg, CV {{metrics.planes.by_key.43_483.spacing_cv|.2f}}); 53.1 deg / 463 km {{metrics.planes.by_key.53p1_463.planes}} ({{metrics.planes.by_key.53p1_463.spacing_median_deg|.2f}} deg, CV {{metrics.planes.by_key.53p1_463.spacing_cv|.2f}}); 70 deg / 475 km {{metrics.planes.by_key.70_475.planes}}; 97.4 deg / 465 km {{metrics.planes.by_key.97p4_465.planes}}.",
+      "evidence": ["metrics.planes.by_key.43_483", "metrics.planes.by_key.53p1_463", "metrics.planes.by_key.70_475", "metrics.planes.by_key.97p4_465"],
+      "references": ["ronchetti2026", "ali2026"],
+      "notes": "Counts are effective RAAN clusters after J2 rectification, not design plane numbers. Mean-anomaly and twin metrics are contaminated where adjacent planes merge."
+    },
+
+    {
+      "id": "L01",
+      "section": "Latency and service geometry",
+      "claim": "A GEO bent-pipe at 35,786 km has a four-leg radio path above 140,000 km and about 0.48 s of light time.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.latency.geo_alt_km|,}} km altitude; 4 x nadir slant = {{metrics.latency.geo_4leg_km|,}} km; {{metrics.latency.geo_4leg_ms|.2f}} ms.",
+      "evidence": ["metrics.latency.geo_alt_km", "metrics.latency.geo_4leg_km", "metrics.latency.geo_4leg_ms"],
+      "references": [],
+      "notes": "Vacuum light time only; no processing, queueing, or fiber."
+    },
+    {
+      "id": "L02",
+      "section": "Latency and service geometry",
+      "claim": "Public figures put GEO service at 600 ms or more and Starlink US peak-hour latency near 25 ms, with a 20 ms goal.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; this study has no end-to-end RTT probe.",
+      "evidence": [],
+      "references": ["casparsen2026"],
+      "notes": "Operator and public-network figures repeated by the explainer. Our radio-only bounds are not comparable to these end-to-end numbers."
+    },
+    {
+      "id": "L03",
+      "section": "Latency and service geometry",
+      "claim": "A 550 km LEO bent-pipe has a ~7 ms radio-only RTT; the 10-site simulation bounds are 6.1-6.5 ms.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "Ideal 550 km: {{metrics.latency.leo550_4leg_km|,}} km / {{metrics.latency.leo550_4leg_ms|.2f}} ms; site medians lower {{metrics.service.median_rtt_lower_p50_ms|.2f}} ms, upper {{metrics.service.median_rtt_upper_p50_ms|.2f}} ms.",
+      "evidence": ["metrics.latency.leo550_4leg_ms", "metrics.service.median_rtt_lower_p50_ms", "metrics.service.median_rtt_upper_p50_ms"],
+      "references": [],
+      "notes": "Gateway-at-nadir (lower) and gateway-at-user (upper) bounds; excludes fiber, processing, scheduling, weather, and load."
+    },
+    {
+      "id": "L04",
+      "section": "Latency and service geometry",
+      "claim": "Sites see tens of Starlink satellites above a 25 deg elevation mask.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "Median visible p50 {{metrics.service.median_visible_p50|.1f}}; site range {{metrics.service.visible_p50_range.0}}-{{metrics.service.visible_p50_range.1}}.",
+      "evidence": ["metrics.service.median_visible_p50", "metrics.service.visible_p50_range"],
+      "references": [],
+      "notes": "Ten sites, 24 h at 15 s, satellites between 400 and 600 km."
+    },
+    {
+      "id": "L05",
+      "section": "Latency and service geometry",
+      "claim": "Best-satellite handovers occur on 15-30 s scales.",
+      "status": "consistent",
+      "source": "derived",
+      "measured": "p50 median {{metrics.service.median_handover_interval_s|.1f}} s (range {{metrics.service.handover_p50_range_s.0}}-{{metrics.service.handover_p50_range_s.1}}); p90 median {{metrics.service.median_handover_p90_s|.1f}} s.",
+      "evidence": ["metrics.service.median_handover_interval_s", "metrics.service.handover_p50_range_s", "metrics.service.median_handover_p90_s"],
+      "references": ["casparsen2026", "tidetcp2026"],
+      "notes": "Geometric best-satellite model, not the operational scheduler. Literature reports a 15 s global reconfiguration."
+    },
+    {
+      "id": "L06",
+      "section": "Latency and service geometry",
+      "claim": "Fiber is about 1.5 times slower than vacuum, and a 12 GHz carrier has an 83.33 ps period.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "Fiber slowdown {{metrics.latency.fiber_slowdown|.1f}}x; 1/12 GHz = {{metrics.latency.ku_12ghz_period_ps|.2f}} ps.",
+      "evidence": ["metrics.latency.fiber_slowdown", "metrics.latency.ku_12ghz_period_ps"],
+      "references": [],
+      "notes": "The 1.5x figure is a representative refractive-index value, not a measured fiber route."
+    },
+
+    {
+      "id": "S01",
+      "section": "Spacecraft and radio",
+      "claim": "A Gen2 mini is about 800 kg with a roughly 30 m array span and 116 m2 area; Gen1 was about 300 kg with an 8 m panel.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no mass, area, or dimension telemetry in public TLEs.",
+      "evidence": [],
+      "references": [],
+      "notes": "Operator specification repeated by the explainer."
+    },
+    {
+      "id": "S02",
+      "section": "Spacecraft and radio",
+      "claim": "The user terminal is an electronically steered phased array, not a mechanically tracked dish.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no terminal teardown or beam-pattern data.",
+      "evidence": [],
+      "references": [],
+      "notes": "Hardware claim from the explainer."
+    },
+    {
+      "id": "S03",
+      "section": "Spacecraft and radio",
+      "claim": "Spacecraft use star trackers and many Linux computers, including 4,000+ computers across 60 Gen1 satellites.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no onboard avionics data.",
+      "evidence": [],
+      "references": [],
+      "notes": "Company statement repeated by the explainer."
+    },
+    {
+      "id": "S04",
+      "section": "Spacecraft and radio",
+      "claim": "Argon Hall thrusters provide about 170 mN with a sub-2.3 kg unit, about 2.5x Gen1 thrust and 1.5x efficiency; propellant moved from krypton to argon.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no thruster telemetry in public TLEs.",
+      "evidence": [],
+      "references": [],
+      "notes": "170 mN is about 17.3 g-force equivalent, below a typical 23 g AA cell; the comparison is arithmetic, the thruster specification is external."
+    },
+    {
+      "id": "S05",
+      "section": "Spacecraft and radio",
+      "claim": "A separate high-frequency gateway channel and improved antennas give about 4x the capacity of Gen1.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no capacity or gateway-link telemetry.",
+      "evidence": [],
+      "references": [],
+      "notes": "Operator claim repeated by the explainer."
+    },
+    {
+      "id": "S06",
+      "section": "Spacecraft and radio",
+      "claim": "The user link uses about 12 GHz and electronic steering on microsecond scales.",
+      "status": "partially_verified",
+      "source": "derived",
+      "measured": "12 GHz period {{metrics.latency.ku_12ghz_period_ps|.2f}} ps verified arithmetically; steering latency and array hardware were not measured.",
+      "evidence": ["metrics.latency.ku_12ghz_period_ps"],
+      "references": [],
+      "notes": "The period follows from the stated carrier; the beam-steering speed is a hardware claim."
+    },
+    {
+      "id": "S07",
+      "section": "Spacecraft and radio",
+      "claim": "Doppler at 11.325 GHz stays near +/-230 kHz with rates below 5 kHz/s at a 25 deg mask.",
+      "status": "consistent",
+      "source": "derived",
+      "measured": "p95 max Doppler {{metrics.service.median_doppler_p95_khz|.1f}} kHz (range {{metrics.service.doppler_p95_range_khz.0}}-{{metrics.service.doppler_p95_range_khz.1}}); p95 rate {{metrics.service.median_rate_p95_khz_s|.2f}} kHz/s (max {{metrics.service.rate_p95_max_khz_s|.2f}}); sites with p95 rate >5 kHz/s: {{metrics.service.frac_sites_rate_gt_5|pct}}.",
+      "evidence": ["metrics.service.median_doppler_p95_khz", "metrics.service.doppler_p95_range_khz", "metrics.service.median_rate_p95_khz_s", "metrics.service.frac_sites_rate_gt_5"],
+      "references": ["jardak2023", "kozhaya2025"],
+      "notes": "Geometric Doppler, not a receiver implementation. The 230 kHz and 5 kHz/s figures are consistent with the cited measurements."
+    },
+    {
+      "id": "S08",
+      "section": "Spacecraft and radio",
+      "claim": "Laser links use three terminals per satellite at 100-200 Gbps; the mesh reportedly carries 260,000 links/day, spans 5,400 km, acquires in 12 s, and moves 42 PB/day at over 99% uptime.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; public TLEs carry no laser telemetry.",
+      "evidence": [],
+      "references": [],
+      "notes": "Company statements repeated by the explainer; not independently verified."
+    },
+
+    {
+      "id": "N01",
+      "section": "Network operations",
+      "claim": "The network reconfigures on a roughly 15 s global schedule.",
+      "status": "consistent",
+      "source": "literature",
+      "measured": "Geometric handover p50 {{metrics.service.median_handover_interval_s|.1f}} s (range {{metrics.service.handover_p50_range_s.0}}-{{metrics.service.handover_p50_range_s.1}}); no scheduler telemetry.",
+      "evidence": ["metrics.service.median_handover_interval_s", "metrics.service.handover_p50_range_s"],
+      "references": ["casparsen2026", "tidetcp2026"],
+      "notes": "Our best-satellite simulation is consistent with 15 s slots but cannot prove the operational schedule."
+    },
+    {
+      "id": "N02",
+      "section": "Network operations",
+      "claim": "Satellites are bent-pipe relays to gateways, and the US has more than 100 gateway sites.",
+      "status": "partially_verified",
+      "source": "transcript",
+      "measured": "Radio bounds are consistent with a bent-pipe path ({{metrics.service.median_rtt_lower_p50_ms|.2f}}-{{metrics.service.median_rtt_upper_p50_ms|.2f}} ms); the gateway count is external.",
+      "evidence": ["metrics.service.median_rtt_lower_p50_ms", "metrics.service.median_rtt_upper_p50_ms"],
+      "references": [],
+      "notes": "No gateway coordinates were used; the count is an operator claim."
+    },
+    {
+      "id": "N03",
+      "section": "Network operations",
+      "claim": "Covering the globe from about 500 km requires thousands of satellites.",
+      "status": "consistent",
+      "source": "derived",
+      "measured": "A {{metrics.service.meta.n_satellites|,}}-satellite simulation yields {{metrics.service.median_visible_p50|.1f}} visible p50 per site; no counterfactual small-constellation run.",
+      "evidence": ["metrics.service.meta.n_satellites", "metrics.service.median_visible_p50"],
+      "references": ["ronchetti2026", "ali2026"],
+      "notes": "Coverage geometry, not a market or capacity argument."
+    },
+
+    {
+      "id": "E01",
+      "section": "Launch and evolution",
+      "claim": "About 4,400 satellites moved from roughly 550 to 480 km in 2026.",
+      "status": "partially_verified",
+      "source": "transcript",
+      "measured": "Measured medians: 70 deg {{metrics.migration.by_family.apr2026_nov2026.70.alt_a_median_km|.1f}} -> {{metrics.migration.by_family.apr2026_nov2026.70.alt_b_median_km|.1f}} km (n={{metrics.migration.by_family.apr2026_nov2026.70.matched|,}}, {{metrics.migration.by_family.apr2026_nov2026.70.frac_lowered_gt10km|pct}} lowered >10 km); 53.1 deg {{metrics.migration.by_family.apr2026_nov2026.53p1.alt_a_median_km|.1f}} -> {{metrics.migration.by_family.apr2026_nov2026.53p1.alt_b_median_km|.1f}} km (n={{metrics.migration.by_family.apr2026_nov2026.53p1.matched|,}}); 43 deg stable at {{metrics.migration.by_family.apr2026_nov2026.43.alt_b_median_km|.1f}} km; 97.4 deg {{metrics.migration.by_family.apr2026_nov2026.97p4.alt_a_median_km|.1f}} -> {{metrics.migration.by_family.apr2026_nov2026.97p4.alt_b_median_km|.1f}} km.",
+      "evidence": ["metrics.migration.by_family.apr2026_nov2026.70", "metrics.migration.by_family.apr2026_nov2026.53p1", "metrics.migration.by_family.apr2026_nov2026.43", "metrics.migration.by_family.apr2026_nov2026.97p4"],
+      "references": ["ali2026"],
+      "notes": "The exact 4,400 count is external. The public '550 to 480' summary is shell-specific: 483, 463, 475, and 465 km in our data."
+    },
+    {
+      "id": "E02",
+      "section": "Launch and evolution",
+      "claim": "SpaceX conducted 165 launches in 2025.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Our SATCAT-derived count is {{metrics.launches.launches_2025}} Starlink-dedicated launches carrying {{metrics.launches.sats_2025|,}} still-on-orbit objects; total Falcon 9 launches cannot be separated from this table.",
+      "evidence": ["metrics.launches.launches_2025", "metrics.launches.sats_2025"],
+      "references": [],
+      "notes": "Different denominators: 165 is an all-launch company figure, while 122 counts Starlink launches inferred from on-orbit object IDs."
+    },
+    {
+      "id": "E03",
+      "section": "Launch and evolution",
+      "claim": "About 1,000 Starlink satellites launched in the first 3.5 months of 2026.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "{{metrics.launches.first_3p5m_2026|,}} on-orbit objects with launch dates 2026-01-01 through 2026-04-15.",
+      "evidence": ["metrics.launches.first_3p5m_2026"],
+      "references": [],
+      "notes": "Counts surviving catalog objects, not all launched objects."
+    },
+    {
+      "id": "E04",
+      "section": "Launch and evolution",
+      "claim": "A Falcon 9 Starlink stack now carries 25-29 satellites.",
+      "status": "verified",
+      "source": "transcript",
+      "measured": "2025: median {{metrics.launches.per_launch.2025.median}} ({{metrics.launches.per_launch.2025.frac_25_to_29|pct}} in 25-29, n={{metrics.launches.per_launch.2025.n_launches}}); 2026: median {{metrics.launches.per_launch.2026.median}} ({{metrics.launches.per_launch.2026.frac_25_to_29|pct}}, n={{metrics.launches.per_launch.2026.n_launches}}).",
+      "evidence": ["metrics.launches.per_launch.2025", "metrics.launches.per_launch.2026"],
+      "references": [],
+      "notes": "The historical 21-satellite first Gen2 stack is not re-tested."
+    },
+    {
+      "id": "E06",
+      "section": "Launch and evolution",
+      "claim": "Starship V3 is about 2 t with over 1 Tbit/s; 20 satellites flew at about 190 km in July 2026; 26 operational satellites followed in late September 2026; future flights may carry 60.",
+      "status": "partially_verified",
+      "source": "transcript",
+      "measured": "November 2026 snapshot: {{metrics.v3_group.n}} objects at 30.5 deg, median {{metrics.v3_group.alt_median_km|.1f}} km; {{metrics.v3_group.launch_days.2026_09_28}} have a 2026-09-28 launch date at {{metrics.v3_group.alt_range_by_day.2026_09_28.0|.1f}}-{{metrics.v3_group.alt_range_by_day.2026_09_28.1|.1f}} km; {{metrics.v3_group.launch_days.2026_11_13}} have a 2026-11-13 date at {{metrics.v3_group.alt_range_by_day.2026_11_13.0|.1f}}-{{metrics.v3_group.alt_range_by_day.2026_11_13.1|.1f}} km. Mass and throughput were not measured.",
+      "evidence": ["metrics.v3_group", "metrics.shells.by_key.30p5_345"],
+      "references": [],
+      "notes": "The 26-satellite cohort is consistent with the first operational V3 launch; vehicle type, mass, and throughput remain external."
+    },
+    {
+      "id": "E07",
+      "section": "Launch and evolution",
+      "claim": "The 30.5 deg group is a fresh two-cohort deployment signature, not a long-lived operational shell.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.v3_group.n}} objects at 30.5 deg: {{metrics.v3_group.launch_days.2026_09_28}} launched 2026-09-28 at {{metrics.v3_group.alt_range_by_day.2026_09_28.0|.1f}}-{{metrics.v3_group.alt_range_by_day.2026_09_28.1|.1f}} km; {{metrics.v3_group.launch_days.2026_11_13}} launched 2026-11-13 at {{metrics.v3_group.alt_range_by_day.2026_11_13.0|.1f}}-{{metrics.v3_group.alt_range_by_day.2026_11_13.1|.1f}} km.",
+      "evidence": ["metrics.v3_group.launch_days", "metrics.v3_group.alt_range_by_day"],
+      "references": [],
+      "notes": "The second cohort is visibly raising through the first cohort's altitude, which explains the spread rather than a stable 345 km shell."
+    },
+    {
+      "id": "E08",
+      "section": "Launch and evolution",
+      "claim": "The catalog gained about 1,437 objects and lost 358 between April and November 2026.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.population_flow.0.new|,}} new, {{metrics.population_flow.0.missing}} missing, {{metrics.population_flow.0.matched|,}} matched over {{metrics.population_flow.0.months|.2f}} months; identity check {{metrics.population_flow.0.check_identity}}.",
+      "evidence": ["metrics.population_flow.0.new", "metrics.population_flow.0.missing", "metrics.population_flow.0.matched", "metrics.population_flow.0.check_identity"],
+      "references": [],
+      "notes": "Missing means absent from the later snapshot, not confirmed decayed; SATCAT retains only on-orbit objects."
+    },
+    {
+      "id": "E09",
+      "section": "Launch and evolution",
+      "claim": "Catalog attrition is about 0.46% per month, with about 187 new objects per month.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.population_flow.0.missing_pct_per_month|.2f}}% missing per month; {{metrics.population_flow.0.new_per_month|.1f}} new per month.",
+      "evidence": ["metrics.population_flow.0.missing_pct_per_month", "metrics.population_flow.0.new_per_month"],
+      "references": [],
+      "notes": "Rates assume a constant process over the 7.69-month interval; they are descriptive, not a survival model."
+    },
+
+    {
+      "id": "D01",
+      "section": "Safety and environment",
+      "claim": "Starlink performed more than 355,000 avoidance maneuvers from June 2025 to May 2026, over 40 per satellite per year, with a threshold 10 times lower than industry.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; our TLE panel detects {{metrics.maneuvers.events}} orbit-control steps in {{metrics.maneuvers.satellites}} satellites, which are not avoidance events.",
+      "evidence": ["metrics.maneuvers.events", "metrics.maneuvers.satellites"],
+      "references": [],
+      "notes": "The TLE-step count is a different quantity (altitude changes, not conjunction-driven maneuvers)."
+    },
+    {
+      "id": "D02",
+      "section": "Safety and environment",
+      "claim": "Drag shortens failed-satellite lifetime by more than 80% during solar minimum.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no solar-cycle or drag model was run.",
+      "evidence": [],
+      "references": [],
+      "notes": "Company/regulatory statement repeated by the explainer."
+    },
+    {
+      "id": "D03",
+      "section": "Safety and environment",
+      "claim": "Lower satellites decay faster.",
+      "status": "consistent",
+      "source": "derived",
+      "measured": "Linearized lifetimes: 30.5 deg {{metrics.decay_by_family.30p5.life_median_yr|.2f}} yr; 53.1 deg {{metrics.decay_by_family.53p1.life_median_yr|.2f}} yr; 43 deg {{metrics.decay_by_family.43.life_median_yr|.2f}} yr; 70 deg {{metrics.decay_by_family.70.life_median_yr|.2f}} yr; 97.4 deg {{metrics.decay_by_family.97p4.life_median_yr|.2f}} yr.",
+      "evidence": ["metrics.decay_by_family.30p5", "metrics.decay_by_family.53p1", "metrics.decay_by_family.43", "metrics.decay_by_family.70", "metrics.decay_by_family.97p4"],
+      "references": [],
+      "notes": "Derived from TLE ndot and a linearized altitude model; not a propagator lifetime and not a solar-cycle prediction."
+    },
+    {
+      "id": "D04",
+      "section": "Safety and environment",
+      "claim": "Astronomy mitigation uses dark paint, mirror film, attitude changes, and published ephemerides.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no brightness or observatory data.",
+      "evidence": [],
+      "references": [],
+      "notes": "Operational and policy claim repeated by the explainer."
+    },
+
+    {
+      "id": "C01",
+      "section": "Direct-to-cell",
+      "claim": "Direct-to-cell is a distinct sub-constellation intended to serve ordinary 4G phones.",
+      "status": "partially_verified",
+      "source": "transcript",
+      "measured": "{{metrics.dtc.n_nov2026}} DTC-tagged objects in November 2026; median altitude {{metrics.dtc.alt_median_nov2026_km|.1f}} km; inclination {{metrics.dtc.inc_median_2025_deg|.2f}} deg (Apr 2025) -> {{metrics.dtc.inc_median_2026_deg|.2f}} deg (Apr 2026) -> {{metrics.dtc.inc_median_nov2026_deg|.2f}} deg (Nov 2026).",
+      "evidence": ["metrics.dtc.n_nov2026", "metrics.dtc.alt_median_nov2026_km", "metrics.dtc.inc_median_2026_deg"],
+      "references": [],
+      "notes": "The DTC tag is a name suffix, not a service test; the plane change is measured, the phone compatibility is external."
+    },
+    {
+      "id": "C02",
+      "section": "Direct-to-cell",
+      "claim": "Six DTC satellites launched in January 2024 and the first text messages followed days later; the phone transmits at about 0.2 W.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no launch or link-budget data.",
+      "evidence": [],
+      "references": [],
+      "notes": "Company statement repeated by the explainer."
+    },
+    {
+      "id": "C03",
+      "section": "Direct-to-cell",
+      "claim": "DTC service operates with carriers in the US, Canada, Japan, and Australia and uses laser backhaul.",
+      "status": "external_only",
+      "source": "transcript",
+      "measured": "Not measured; no carrier or backhaul telemetry.",
+      "evidence": [],
+      "references": [],
+      "notes": "Operator claim repeated by the explainer."
+    },
+
+    {
+      "id": "M01",
+      "section": "Validation",
+      "claim": "The SGP4 implementation matches the official verification vectors.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "{{metrics.sgp4_validation.vectors_compared}} vectors across {{metrics.sgp4_validation.cases_with_vectors}} cases; {{metrics.sgp4_validation.propagation_errors}} declared propagation error; max position error {{metrics.sgp4_validation.max_pos_km}} km.",
+      "evidence": ["metrics.sgp4_validation.vectors_compared", "metrics.sgp4_validation.cases_with_vectors", "metrics.sgp4_validation.propagation_errors", "metrics.sgp4_validation.max_pos_km"],
+      "references": ["vallado2006"],
+      "notes": "Python sgp4 2.27 against SGP4-VER.TLE/tcppver.out."
+    },
+    {
+      "id": "M02",
+      "section": "Validation",
+      "claim": "J2 nodal regression predicts RAAN to better than 0.1% at the median.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "Median |relative error| {{metrics.j2.median_abs_rel_error_pct|.3f}}%, p95 {{metrics.j2.p95_abs_rel_error_pct|.3f}}%, max {{metrics.j2.max_abs_rel_error_pct|.3f}}% over {{metrics.j2.n_satellites}} satellites.",
+      "evidence": ["metrics.j2.median_abs_rel_error_pct", "metrics.j2.p95_abs_rel_error_pct", "metrics.j2.max_abs_rel_error_pct", "metrics.j2.n_satellites"],
+      "references": [],
+      "notes": "A 27-satellite, 17-month TLE panel; residual spread is bimodal and not fully explained."
+    },
+    {
+      "id": "M03",
+      "section": "Validation",
+      "claim": "TLE mean-motion altitudes agree with SATCAT to about 1 km.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "n={{metrics.satcat_altitude_check.n|,}}; median |difference| {{metrics.satcat_altitude_check.median_abs_diff_km|.2f}} km, p95 {{metrics.satcat_altitude_check.p95_abs_diff_km|.2f}} km, p99 {{metrics.satcat_altitude_check.p99_abs_diff_km|.2f}} km, max {{metrics.satcat_altitude_check.max_abs_diff_km|.2f}} km.",
+      "evidence": ["metrics.satcat_altitude_check"],
+      "references": [],
+      "notes": "SATCAT apogee/perigee midpoint versus TLE semi-major-axis altitude; the tail includes eccentric or maneuvering objects."
+    },
+    {
+      "id": "M04",
+      "section": "Validation",
+      "claim": "Plane counts are stable at a 0.2 deg RAAN threshold.",
+      "status": "verified",
+      "source": "derived",
+      "measured": "43 deg / 483 km: {{metrics.planes.by_key.43_483.planes}} groups; 53.1 deg / 463 km: {{metrics.planes.by_key.53p1_463.planes}}; 70 deg / 475 km: {{metrics.planes.by_key.70_475.planes}}; 97.4 deg / 465 km: {{metrics.planes.by_key.97p4_465.planes}}.",
+      "evidence": ["metrics.planes.by_key.43_483.planes", "metrics.planes.by_key.53p1_463.planes", "metrics.planes.by_key.70_475.planes", "metrics.planes.by_key.97p4_465.planes"],
+      "references": ["ronchetti2026"],
+      "notes": "The full threshold sensitivity table is results/tables/anatomy_stability_nov2026.csv; 0.05 deg is degenerate because group RAAN standard deviation is about 0.2 deg."
+    }
+  ]
+}

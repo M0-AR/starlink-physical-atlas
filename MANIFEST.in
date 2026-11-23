@@ -1,0 +1,10 @@
+include README.md
+include LICENSE
+include CITATION.cff
+include CHANGELOG.md
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include SECURITY.md
+recursive-include configs *.json *.yaml
+recursive-include src/atlas *.py
+recursive-include tests *.py
